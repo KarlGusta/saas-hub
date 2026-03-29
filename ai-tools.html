@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tools for Business and Creators</title>
+  <meta name="description" content="Discover AI tools for design, content creation, hiring, and automation.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap');
+
+    :root {
+      --bg-color: #0c0c0c;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #FFFFFF;
+      --text-muted: #888888;
+      --accent-orange: #FF5029;
+      --accent-green: #0C9146;
+      --accent-grey: #343433;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      background-image: 
+        radial-gradient(circle at 15% 50%, rgba(255, 80, 41, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(12, 145, 70, 0.08) 0%, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-wrapper {
+      margin-bottom: 4rem;
+      width: 100%;
+    }
+
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+      margin-left: -1rem;
+      border-radius: 8px;
+    }
+
+    .nav-btn:hover {
+      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #FFFFFF 0%, #a3a3a3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-decoration: none;
+      color: var(--text-main);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(10px);
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .card:nth-child(even)::before {
+      background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 300;
+      flex-grow: 1;
+      margin-bottom: 2rem;
+    }
+
+    .card .link-text {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+    }
+
+    .card:hover .link-text {
+      color: var(--accent-orange);
+    }
+    .card:nth-child(even):hover .link-text {
+      color: var(--accent-green);
+    }
+
+    .card .link-text svg {
+      width: 18px;
+      height: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .link-text svg {
+      transform: translateX(6px);
+    }
+
+    .seo-content {
+      margin-top: 4rem;
+      padding: 3rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      backdrop-filter: blur(10px);
+    }
+
+    .seo-content h2 {
+      color: var(--text-main);
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .seo-content p {
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      body { padding: 2rem 1rem; }
+      .card { padding: 1.5rem; }
+      header { margin-bottom: 2rem; }
+      .seo-content { padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="nav-wrapper">
+    <a href="index.html" class="nav-btn">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+      Back to Home
+    </a>
+  </div>
+
+  <header>
+    <h1>AI Tools for Business and Creators</h1>
+    <p>Generate content, designs, and automate workflows using practical AI tools.</p>
+  </header>
+
+  <div class="grid">
+    <!-- FurnishlyAI -->
+    <a href="https://furnishlyai.collabtower.com/" class="card">
+      <h3>FurnishlyAI</h3>
+      <p>
+        Generate AI-powered interior design ideas and styled room concepts instantly from your inputs.
+      </p>
+      <div class="link-text">
+        Explore Tool
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </div>
+    </a>
+
+    <!-- Kivora -->
+    <a href="https://kivora.collabtower.com/" class="card">
+      <h3>Kivora</h3>
+      <p>
+        Create realistic 3D kitchen remodels from photos with multiple AI-generated design options.
+      </p>
+      <div class="link-text">
+        Explore Tool
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </div>
+    </a>
+
+    <!-- Hireva -->
+    <a href="https://hireva.collabtower.com/" class="card">
+      <h3>Hireva</h3>
+      <p>
+        Analyze resumes against job descriptions and improve your chances with ATS optimization insights.
+      </p>
+      <div class="link-text">
+        Try Tool
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </div>
+    </a>
+
+    <!-- Vidara -->
+    <a href="https://vidara.collabtower.com/" class="card">
+      <h3>Vidara</h3>
+      <p>
+        Create short-form videos for TikTok, Instagram, and YouTube using AI scripts and voice generation.
+      </p>
+      <div class="link-text">
+        Try Tool
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </div>
+    </a>
+  </div>
+
+  <!-- SEO CONTENT -->
+  <div class="seo-content">
+    <h2>How AI Tools Improve Productivity</h2>
+    <p>
+      AI tools are transforming how businesses and creators work by automating repetitive tasks like content creation, design, and data analysis.
+    </p>
+
+    <p>
+      From generating visuals to optimizing resumes and creating videos, AI reduces time spent on manual work and allows faster execution.
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>

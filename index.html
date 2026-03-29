@@ -1,253 +1,331 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SaaS Tools Hub</title>
-  <meta name="description" content="AI, finance, and SaaS tools for modern businesses">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap');
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SaaS Tools Hub</title>
+    <meta
+      name="description"
+      content="AI, finance, and SaaS tools for modern businesses"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap");
 
-    :root {
-      --bg-color: #0c0c0c;
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-border: rgba(255, 255, 255, 0.1);
-      --text-main: #FFFFFF;
-      --text-muted: #888888;
-      --accent-orange: #FF5029;
-      --accent-green: #0C9146;
-      --accent-grey: #343433;
-    }
+      :root {
+        --bg-color: #0c0c0c;
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --card-border: rgba(255, 255, 255, 0.1);
+        --text-main: #ffffff;
+        --text-muted: #888888;
+        --accent-orange: #ff5029;
+        --accent-green: #0c9146;
+        --accent-grey: #343433;
+      }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-    body {
-      font-family: 'Space Grotesk', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-main);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 4rem 2rem;
-      background-image: 
-        radial-gradient(circle at 15% 50%, rgba(255, 80, 41, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 85% 30%, rgba(12, 145, 70, 0.08) 0%, transparent 50%);
-      background-attachment: fixed;
-    }
+      body {
+        font-family: "Space Grotesk", sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 4rem 2rem;
+        background-image:
+          radial-gradient(
+            circle at 15% 50%,
+            rgba(255, 80, 41, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 85% 30%,
+            rgba(12, 145, 70, 0.08) 0%,
+            transparent 50%
+          );
+        background-attachment: fixed;
+      }
 
-    .container {
-      max-width: 900px;
-      width: 100%;
-      position: relative;
-      z-index: 1;
-    }
+      .container {
+        max-width: 900px;
+        width: 100%;
+        position: relative;
+        z-index: 1;
+      }
 
-    header {
-      text-align: center;
-      margin-bottom: 4rem;
-    }
+      header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
 
-    h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      letter-spacing: -0.05em;
-      margin-bottom: 1rem;
-      background: linear-gradient(135deg, #FFFFFF 0%, #a3a3a3 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        letter-spacing: -0.05em;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
 
-    header p {
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      max-width: 600px;
-      margin: 0 auto;
-    }
+      header p {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        font-weight: 300;
+        max-width: 600px;
+        margin: 0 auto;
+      }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+      }
 
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 2rem;
-      text-decoration: none;
-      color: var(--text-main);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      backdrop-filter: blur(10px);
-    }
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 16px;
+        padding: 2rem;
+        text-decoration: none;
+        color: var(--text-main);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        backdrop-filter: blur(10px);
+      }
 
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent-orange), transparent);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
+      .card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-orange),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
 
-    .card:nth-child(even)::before {
-      background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
-    }
+      .card:nth-child(even)::before {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-green),
+          transparent
+        );
+      }
 
-    .card:hover {
-      transform: translateY(-8px) scale(1.02);
-      border-color: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
-    }
+      .card:hover {
+        transform: translateY(-8px) scale(1.02);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+      }
 
-    .card:hover::before {
-      opacity: 1;
-    }
+      .card:hover::before {
+        opacity: 1;
+      }
 
-    .card h3 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
+      .card h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
 
-    .card p {
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.6;
-      font-weight: 300;
-      flex-grow: 1;
-      margin-bottom: 1.5rem;
-    }
+      .card p {
+        color: var(--text-muted);
+        font-size: 1rem;
+        line-height: 1.6;
+        font-weight: 300;
+        flex-grow: 1;
+        margin-bottom: 1.5rem;
+      }
 
-    .card .link-text {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--text-main);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: color 0.3s ease;
-    }
+      .card .link-text {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-main);
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: color 0.3s ease;
+      }
 
-    .card:hover .link-text {
-      color: var(--accent-orange);
-    }
-    .card:nth-child(even):hover .link-text {
-      color: var(--accent-green);
-    }
+      .card:hover .link-text {
+        color: var(--accent-orange);
+      }
+      .card:nth-child(even):hover .link-text {
+        color: var(--accent-green);
+      }
 
-    .card .link-text svg {
-      width: 16px;
-      height: 16px;
-      transition: transform 0.3s ease;
-    }
+      .card .link-text svg {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.3s ease;
+      }
 
-    .card:hover .link-text svg {
-      transform: translateX(4px);
-    }
+      .card:hover .link-text svg {
+        transform: translateX(4px);
+      }
 
-    .more-links {
-      text-align: center;
-      margin-top: 3rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--card-border);
-    }
+      .more-links {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 3rem;
+        border-top: 1px solid var(--card-border);
+      }
 
-    .nav-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 1.25rem 2.5rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--card-border);
-      border-radius: 50px;
-      color: var(--text-main);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-    }
+      .nav-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1.25rem 2.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--card-border);
+        border-radius: 50px;
+        color: var(--text-main);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(5px);
+      }
 
-    .nav-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-    
-    .nav-btn svg {
-      transition: transform 0.3s ease;
-    }
-    
-    .nav-btn:hover svg {
-      transform: translateX(4px);
-    }
+      .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
 
-    @media (max-width: 768px) {
-      h1 { font-size: 2.5rem; }
-      body { padding: 2rem 1rem; }
-      header { margin-bottom: 2rem; }
-    }
-  </style>
-</head>
-<body>
+      .nav-btn svg {
+        transition: transform 0.3s ease;
+      }
 
-  <div class="container">
-    <header>
-      <h1>SaaS Tools Hub</h1>
-      <p>AI, finance, and automation tools built for modern businesses.</p>
-    </header>
+      .nav-btn:hover svg {
+        transform: translateX(4px);
+      }
 
-    <div class="grid">
-      <a href="https://bankconvert.collabtower.com/" class="card">
-        <h3>Bank Statement Converter</h3>
-        <p>Convert PDF bank statements into clean JSON or CSV formats instantly with high precision.</p>
-        <div class="link-text">
-          Visit Tool 
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        </div>
-      </a>
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+        body {
+          padding: 2rem 1rem;
+        }
+        header {
+          margin-bottom: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>SaaS Tools Hub</h1>
+        <p>AI, finance, and automation tools built for modern businesses.</p>
+      </header>
 
-      <a href="https://adentra.collabtower.com/" class="card">
-        <h3>Adentra</h3>
-        <p>Track real revenue from ads using deep Stripe attribution and analytics dashboards.</p>
-        <div class="link-text">
-          Visit Tool 
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        </div>
-      </a>
+      <div class="grid">
+        <a href="https://bankconvert.collabtower.com/" class="card">
+          <h3>Bank Statement Converter</h3>
+          <p>
+            Convert PDF bank statements into clean JSON or CSV formats instantly
+            with high precision.
+          </p>
+          <div class="link-text">
+            Visit Tool
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              ></path>
+            </svg>
+          </div>
+        </a>
 
-      <a href="https://nexora.collabtower.com/" class="card">
-        <h3>Nexora</h3>
-        <p>Launch SaaS apps faster with a production-ready Next.js starter kit tailored for performance.</p>
-        <div class="link-text">
-          Visit Tool 
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-        </div>
-      </a>
+        <a href="https://adentra.collabtower.com/" class="card">
+          <h3>Adentra</h3>
+          <p>
+            Track real revenue from ads using deep Stripe attribution and
+            analytics dashboards.
+          </p>
+          <div class="link-text">
+            Visit Tool
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              ></path>
+            </svg>
+          </div>
+        </a>
+
+        <a href="https://nexora.collabtower.com/" class="card">
+          <h3>Nexora</h3>
+          <p>
+            Launch SaaS apps faster with a production-ready Next.js starter kit
+            tailored for performance.
+          </p>
+          <div class="link-text">
+            Visit Tool
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              ></path>
+            </svg>
+          </div>
+        </a>
+      </div>
+
+      <div class="more-links">
+        <a href="financial-automation.html" class="nav-btn">
+          View Financial Tools
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            ></path>
+          </svg>
+        </a>
+        <a href="ai-tools.html" class="nav-btn"> View AI Tools </a>
+        <a href="saas-starter-kits.html" class="nav-btn">
+          View SaaS Builders
+        </a>
+        <a href="convert-bank-statements.html" class="nav-btn">
+          Learn: Convert Bank Statements
+        </a>
+      </div>
     </div>
-    
-    <div class="more-links">
-      <a href="financial-automation.html" class="nav-btn">
-        View Financial Tools 
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-      </a>
-    </div>
-  </div>
-
-</body>
+  </body>
 </html>
